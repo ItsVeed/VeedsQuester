@@ -5,6 +5,7 @@ import com.epicbot.api.shared.APIContext;
 import com.epicbot.api.shared.methods.IQuestAPI;
 import com.epicbot.api.shared.script.tree.BranchTask;
 import com.epicbot.api.shared.script.tree.TreeTask;
+import leafs.NextTask;
 import tasks.Task;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class Quest extends BranchTask {
         tasks.add(task);
     }
 
-    private void nextTask() {
+    public void nextTask() {
         tasks.remove(0);
     }
 
@@ -34,8 +35,7 @@ public class Quest extends BranchTask {
 
     @Override
     protected TreeTask createSuccessTask(APIContext apiContext) {
-        tasks.remove(0);
-        return null;
+        return new NextTask(ctx, this);
     }
 
     @Override
