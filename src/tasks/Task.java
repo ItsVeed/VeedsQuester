@@ -69,12 +69,16 @@ public class Task extends BranchTask {
 
     @Override
     public boolean validate() {
-        for (Requirement requirement: startRequirements) {
-            if (!requirement.check()) {
-                requirementTask = requirement.requirementTask;
-                return false;
+        if (startRequirements == null) {
+            return true;
+        } else {
+            for (Requirement requirement : startRequirements) {
+                if (!requirement.check()) {
+                    requirementTask = requirement.requirementTask;
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
     }
 }
