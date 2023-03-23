@@ -19,7 +19,7 @@ public class Quest extends BranchTask {
     }
 
 
-    private void addTask(Task task) {
+    protected void addTask(Task task) {
         tasks.add(task);
     }
 

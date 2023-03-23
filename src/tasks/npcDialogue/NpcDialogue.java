@@ -17,9 +17,10 @@ public class NpcDialogue extends Task {
         this.npcid = npcid;
     }
 
-
-    public void confirm() {
+    @Override
+    public Task confirm() {
         create(new FindNpc(ctx, npcid, chatOptions, area));
+        return this;
     }
     public NpcDialogue addDialogueStep(String dialogueOption) {
         chatOptions.add(dialogueOption);

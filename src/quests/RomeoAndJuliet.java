@@ -16,6 +16,10 @@ public class RomeoAndJuliet extends Quest {
     public RomeoAndJuliet(APIContext ctx) {
         super(ctx);
         this.quest = IQuestAPI.Quest.ROMEO_AND_JULIET;
+
+        setupAreas();
+        setupRequirements();
+        setupTasks();
     }
 
     private void setupTasks() {
@@ -24,35 +28,51 @@ public class RomeoAndJuliet extends Quest {
                 .addDialogueStep("Yes.")
                 .addDialogueStep("Ok, thanks")
                 .setArea(varrockSquare)
-                .startRequirements(CadavaBerries);
+                .startRequirements(CadavaBerries)
+                .confirm();
 
         talkToJuliet = new NpcDialogue(ctx, 10, 5035)
-                .setArea(balcony);
+                .setArea(balcony)
+                .confirm();
 
         giveLetterToRomeo = new NpcDialogue(ctx, 20, 5037)
-                .setArea(varrockSquare);
+                .setArea(varrockSquare)
+                .confirm();
 
         talkToLawrence = new NpcDialogue(ctx, 30, 5038)
-                .setArea(church);
+                .setArea(church)
+                .confirm();
 
         talkToApothecary = new NpcDialogue(ctx, 40, 5036)
                 .addDialogueStep("Talk about something else.")
                 .addDialogueStep("Talk about Romeo & Juliet.")
                 .setArea(potionShop)
-                .startRequirements(CadavaBerries);
+                .startRequirements(CadavaBerries)
+                .confirm();
 
         talkToApothecary2 = new NpcDialogue(ctx, 50, 5036)
                 .addDialogueStep("Talk about something else.")
                 .addDialogueStep("Talk about Romeo & Juliet.")
                 .setArea(potionShop)
-                .skipRequirements(CadavaPotion);
+                .skipRequirements(CadavaPotion)
+                .confirm();
 
         givePotionToJuliet = new NpcDialogue(ctx, 50, 5035)
-                .setArea(balcony);
+                .setArea(balcony)
+                .confirm();
 
         finishQuest = new NpcDialogue(ctx, 50, 5035)
-                .setArea(varrockSquare);
+                .setArea(varrockSquare)
+                .confirm();
 
+        addTask(talkToRomeo);
+        addTask(talkToJuliet);
+        addTask(giveLetterToRomeo);
+        addTask(talkToLawrence);
+        addTask(talkToApothecary);
+        addTask(talkToApothecary2);
+        addTask(givePotionToJuliet);
+        addTask(finishQuest);
     }
 
     private void setupRequirements() {

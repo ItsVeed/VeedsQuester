@@ -12,7 +12,7 @@ public class Task extends BranchTask {
     public int stage;
     private TreeTask requirementTask = new Error(ctx, "Requirement task not available");
     protected TreeTask entryTask = new Error(ctx, "Task is not yet implemented");
-    private Requirement[] startRequirements;
+    private Requirement[] startRequirements = null;
     public Requirement[] skipRequirements = null;
 
     protected Area area = null;
@@ -33,16 +33,24 @@ public class Task extends BranchTask {
     }
 
     public boolean checkSkipRequirements() {
-        for (Requirement requirement: skipRequirements) {
-            if (requirement.check()) {
-                return true;
+        if (skipRequirements == null) {
+            return false;
+        } else {
+            for (Requirement requirement: skipRequirements) {
+                if (requirement.check()) {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
     }
 
     public void create(TreeTask entryTask) {
         this.entryTask = new HandleCutscene(ctx, entryTask);
+    }
+
+    public Task confirm() {
+        return this;
     }
 
     public Task setArea(Area area) {
