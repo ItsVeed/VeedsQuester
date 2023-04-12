@@ -1,6 +1,5 @@
 package quests;
 
-import branches.IsPlayerInArea;
 import com.epicbot.api.shared.APIContext;
 import com.epicbot.api.shared.methods.IQuestAPI;
 import com.epicbot.api.shared.script.tree.BranchTask;
@@ -40,6 +39,9 @@ public class Quest extends BranchTask {
 
     @Override
     public boolean validate() {
+        System.out.println("Checking stage");
+        System.out.println(getStage(quest));
+        System.out.println(tasks.get(0).stage);
         return tasks.get(0).stage < getStage(quest) || tasks.get(0).checkSkipRequirements();
     }
 

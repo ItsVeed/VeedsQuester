@@ -4,6 +4,8 @@ import com.epicbot.api.shared.APIContext;
 import com.epicbot.api.shared.entity.WidgetChild;
 import com.epicbot.api.shared.script.tree.LeafTask;
 import com.epicbot.api.shared.util.time.Time;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class HandleDialogue extends LeafTask {
     @Override
     public void execute() {
         if (ctx.dialogues().canContinue()) {
-            ctx.dialogues().selectContinue();
+            ctx.keyboard().pressKey(49);
             Time.sleep(10_000, () -> ctx.dialogues().isDialogueOpen(), 4_000);
         }
         if (ctx.dialogues().getOptions() != null) {

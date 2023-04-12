@@ -26,7 +26,7 @@ public class RomeoAndJuliet extends Quest {
         talkToRomeo = new NpcDialogue(ctx, 0, 5037)
                 .addDialogueStep("Perhaps I could help to find her for you?")
                 .addDialogueStep("Yes.")
-                .addDialogueStep("Ok, thanks")
+                .addDialogueStep("Ok, thanks.")
                 .setArea(varrockSquare)
                 .startRequirements(CadavaBerries)
                 .confirm();
@@ -61,7 +61,7 @@ public class RomeoAndJuliet extends Quest {
                 .setArea(balcony)
                 .confirm();
 
-        finishQuest = new NpcDialogue(ctx, 50, 5035)
+        finishQuest = new NpcDialogue(ctx, 60, 5037)
                 .setArea(varrockSquare)
                 .confirm();
 

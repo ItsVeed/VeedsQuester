@@ -1,6 +1,5 @@
 package tasks.npcDialogue;
 
-import branches.IsPlayerInArea;
 import com.epicbot.api.shared.APIContext;
 import com.epicbot.api.shared.entity.NPC;
 import com.epicbot.api.shared.model.Area;
@@ -22,7 +21,7 @@ public class FindNpc extends BranchTask {
     }
     @Override
     protected TreeTask createFailureTask(APIContext apiContext) {
-        return new IsPlayerInArea(ctx, area);
+        return new IsPlayerInArea(ctx, area, n, chatOptions);
     }
 
     @Override
